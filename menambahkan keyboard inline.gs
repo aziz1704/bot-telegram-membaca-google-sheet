@@ -3,14 +3,13 @@ var telegramUrl = "http" + token;
 var webAppUrl = "htt";
 
 
-
 function setWebhook() {
 var url = telegramUrl + "/setWebhook?url=" + webAppUrl;
 var response = UrlFetchApp.fetch(url);
 }
 
 
-function sendMessage(Id, text, keyBoard) {
+function sendMessage(id, text, keyBoard) {
     var data = {
       method: "post",
       payload: {
@@ -31,21 +30,21 @@ var ssId = "1k6LG6E4SQ66t9CgACEjBhC62NN8Y36aQub6APnfJ-Vk";
 var sheet = SpreadsheetApp.openById(ssId).getSheetByName("Grace Master");
   
   if (contents.callback_query) {
-  var Id = contents.callback_query.from.id;
+  var id = contents.callback_query.from.id;
   var data = contents.callback_query.data;
     
   if (data == "START") {
   var START = sheet.getDataRange().getCell(1,2).getValue();
-  return sendMessage(Id, START);
+  return sendMessage(id, START);
   } else if (data == "HELP") {
   var HELP = sheet.getDataRange().getCell(2, 2).getValue();
-  return sendMessage(Id, HELP);
+  return sendMessage(id, HELP);
   } else if (data == "PING") {
   var PING = sheet.getDataRange().getCell(3,2).getValue();
-  return sendMessage(Id, PING);
+  return sendMessage(id, PING);
   } else if (data == "JOJO") {
   var JOJO = sheet.getDataRange().getCell(4, 2).getValue();
-  return sendMessage(Id, JOJO);
+  return sendMessage(id, JOJO);
   } 
   
   } 
@@ -91,3 +90,4 @@ var sheet = SpreadsheetApp.openById(ssId).getSheetByName("Grace Master");
   }
   
 }
+
